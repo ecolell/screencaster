@@ -9,11 +9,11 @@ describe "Episodes" do
     end
 
     it "includes published episode" do
-      page.should have_content("Blast from the Past")
+      expect(page).to have_content("Blast from the Past")
     end
 
     it "does not include unpublished episode" do
-      page.should_not have_content("Back to the Future")
+      expect(page).not_to have_content("Back to the Future")
     end
   end
 
@@ -24,11 +24,11 @@ describe "Episodes" do
     end
 
     it "includes content" do
-      page.should have_content("Lorem ipsum")
+      expect(page).to have_content("Lorem ipsum")
     end
 
     it "includes publication date" do
-      page.should have_content("April 6, 2013")
+      expect(page).to have_content("April 6, 2013")
     end
   end
 
@@ -40,12 +40,12 @@ describe "Episodes" do
 
     it "requires name" do
       click_on "Create"
-      page.should have_content("Name can't be blank")
+      expect(page).to have_content("Name can't be blank")
     end
 
     it "requires description" do
       click_on "Create"
-      page.should have_content("Description can't be blank")
+      expect(page).to have_content("Description can't be blank")
     end
 
     describe "with valid episode" do
@@ -57,19 +57,19 @@ describe "Episodes" do
       end
 
       it "says the record was created" do
-        page.should have_content("Episode was successfully created")
+        expect(page).to have_content("Episode was successfully created")
       end
 
       it "redirects to show page" do
-        current_path.should eq(episode_path(Episode.last))
+        expect(current_path).to eq(episode_path(Episode.last))
       end
 
       it "has updated title" do
-        page.should have_content("Blast from the Past")
+        expect(page).to have_content("Blast from the Past")
       end
 
       it "has minutes" do
-        page.should have_content("15 minutes")
+        expect(page).to have_content("15 minutes")
       end
     end
   end
@@ -84,7 +84,7 @@ describe "Episodes" do
     it "displays validation errors" do
       fill_in "Name", with: ""
       click_on "Update"
-      page.should have_content("error prohibited this")
+      expect(page).to have_content("error prohibited this")
     end
 
     describe "with valid episode" do
@@ -94,15 +94,15 @@ describe "Episodes" do
       end
 
       it "redirects to show page" do
-        current_path.should eq(episode_path(Episode.last))
+        expect(current_path).to eq(episode_path(Episode.last))
       end
 
       it "says the record was updated" do
-        page.should have_content("Episode was successfully updated")
+        expect(page).to have_content("Episode was successfully updated")
       end
 
       it "has updated title" do
-        page.should have_content("Back to the Future")
+        expect(page).to have_content("Back to the Future")
       end
     end
   end
@@ -115,11 +115,11 @@ describe "Episodes" do
     end
 
     it "says the record was destroyed" do
-      page.should have_content("Episode was successfully destroyed")
+      expect(page).to have_content("Episode was successfully destroyed")
     end
 
     it "removes the record" do
-      page.should_not have_content("Hello World")
+      expect(page).not_to have_content("Hello World")
     end
   end
 end
