@@ -1,7 +1,7 @@
 <%= form_for(@episode) do |f| %>
   <% if @episode.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@episode.errors.count, "error") %> prohibited this episode from being saved:</h2>
+      <h2><%= pluralize(@episode.errors.count, 'error') %> prohibited this episode from being saved:</h2>
 
       <ul>
       <% @episode.errors.full_messages.each do |msg| %>
@@ -20,7 +20,7 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :timecode, "Duration (timecode)" %><br />
+    <%= f.label :timecode, 'Duration (timecode)' %><br />
     <%= f.text_field :timecode %>
   </div>
   <div class="actions">

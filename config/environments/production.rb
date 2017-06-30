@@ -1,9 +1,9 @@
-Screencaster::Application.configure do
+Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # Code is not reloaded between requests
   config.cache_classes = true
-  
+
   config.eager_load = true
 
   # Full error reports are disabled and caching is turned on
@@ -57,7 +57,7 @@ Screencaster::Application.configure do
   # config.threadsafe!
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
-  # the I18n.default_locale when a translation can not be found)
+  # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
 
   # Send deprecation notices to registered listeners
@@ -66,4 +66,7 @@ Screencaster::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  # Do not dump schema after migrations.
+  config.active_record.dump_schema_after_migration = false
 end

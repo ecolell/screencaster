@@ -2,7 +2,7 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-Bundler.require(:default, Rails.env)
+Bundler.require(*Rails.groups)
 
 module Screencaster
   class Application < Rails::Application

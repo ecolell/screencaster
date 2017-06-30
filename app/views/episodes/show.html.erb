@@ -10,13 +10,13 @@
 
 <p>
   <b>Duration:</b>
-  <%= pluralize @episode.minutes, "minute" %>
+  <%= pluralize @episode.minutes, 'minute' %>
 </p>
 
 <% if @episode.published_on %>
 <p>
   <b>Published on:</b>
-  <%= @episode.published_on.strftime("%B %e, %Y") %>
+  <%= @episode.published_on.strftime('%B %e, %Y') %>
 </p>
 <% end %>
 
