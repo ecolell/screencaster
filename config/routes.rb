@@ -1,9 +1,9 @@
 Screencaster::Application.routes.draw do
   resources :episodes do
     collection do
-      put :update_many
+      patch :update_many
     end
   end
-  match 'new', to: 'episodes#new'
+  get 'new', to: 'episodes#new'
   root to: 'episodes#index'
 end

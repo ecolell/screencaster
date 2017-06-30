@@ -25,6 +25,8 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
+  config.include Rails.application.routes.url_helpers
+  config.include Capybara::DSL
   config.include FactoryGirl::Syntax::Methods
 
   config.treat_symbols_as_metadata_keys_with_true_values = true
