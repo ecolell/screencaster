@@ -11,6 +11,8 @@ gem 'jquery-rails'
 
 gem 'paper_trail'
 
+gem 'rails_admin'
+
 gem 'rails-observers'
 gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
