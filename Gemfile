@@ -30,4 +30,5 @@ group :test do
   gem "guard-rspec"
   gem "rb-fsevent"
   gem "rspec-collection_matchers"
+  gem 'simplecov', :require => false
 end
