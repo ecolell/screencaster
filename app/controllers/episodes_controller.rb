@@ -45,6 +45,6 @@ private
   end
 
   def episode_params
-    params.require(:episode).permit(:description, :name, :seconds, :published_on, :timecode).to_h
+    params.require(:episode).permit(:description, :name, :seconds, :published_on, :timecode, :tag_list).to_h
   end
 end

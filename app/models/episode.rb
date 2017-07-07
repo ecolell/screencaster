@@ -1,4 +1,7 @@
 class Episode < ApplicationRecord
+  has_many :taggings
+  has_many :tags, through: :taggings
+
   validates_presence_of :name, :description
   scope :published, -> { where('published_on <= ?', Time.now.to_date) }
 

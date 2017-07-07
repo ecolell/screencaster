@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130506054647) do
+ActiveRecord::Schema.define(version: 20170707144318) do
 
   create_table "episodes", force: :cascade do |t|
     t.string "name"
@@ -20,6 +20,21 @@ ActiveRecord::Schema.define(version: 20130506054647) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "pro", default: false, null: false
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer "tag_id"
+    t.integer "episode_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["episode_id"], name: "index_taggings_on_episode_id"
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "versions", force: :cascade do |t|
