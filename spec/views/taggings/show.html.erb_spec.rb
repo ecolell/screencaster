@@ -2,9 +2,10 @@ require 'rails_helper'
 
 RSpec.describe "taggings/show", type: :view do
   before(:each) do
+    episode = Episode.create!(name: 'episode1', description: 'A description.' )
     @tagging = assign(:tagging, Tagging.create!(
-      :tag => nil,
-      :episode => nil
+      :tag => Tag.create!(:name => 'tag3'),
+      :episode => episode
     ))
   end
 
