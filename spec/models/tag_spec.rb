@@ -1,5 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Tag, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Tag do
+  it "validates presence of name" do
+    expect(build(:tag, name: "")).to have(1).errors_on(:name)
+  end
+
 end

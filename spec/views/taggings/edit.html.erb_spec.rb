@@ -3,8 +3,10 @@ require 'rails_helper'
 RSpec.describe "taggings/edit", type: :view do
   before(:each) do
     @tagging = assign(:tagging, Tagging.create!(
-      :tag => nil,
-      :episode => nil
+      :tag => build(:tag),
+      :episode => Episode.create!(
+        :name => 'A new episode',
+        :description => 'A proper description.')
     ))
   end
 
