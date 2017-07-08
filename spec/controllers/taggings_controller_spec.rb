@@ -29,6 +29,10 @@ RSpec.describe TaggingsController, type: :controller do
   # Tagging. As you add validations to Tagging, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
+    #{
+  #    :tag => build(:tag),
+  #    :episode => build(:episode)
+  #  }
     skip("Add a hash of attributes valid for your model")
   }
 
@@ -43,7 +47,7 @@ RSpec.describe TaggingsController, type: :controller do
 
   describe "GET #index" do
     it "returns a success response" do
-      tagging = Tagging.create! valid_attributes
+      Tagging.create! valid_attributes
       get :index, params: {}, session: valid_session
       expect(response).to be_success
     end

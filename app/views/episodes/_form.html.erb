@@ -23,6 +23,12 @@
     <%= f.label :timecode, 'Duration (timecode)' %><br />
     <%= f.text_field :timecode %>
   </div>
+  <div class="field">
+    <%= f.label :tags, 'Tags' %><br />
+    <% @episode.tags.each do |tag| %>
+      <strong><%= tag.name %></strong>
+    <% end %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
