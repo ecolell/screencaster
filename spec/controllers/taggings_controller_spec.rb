@@ -29,15 +29,20 @@ RSpec.describe TaggingsController, type: :controller do
   # Tagging. As you add validations to Tagging, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    #{
-  #    :tag => build(:tag),
-  #    :episode => build(:episode)
-  #  }
-    skip("Add a hash of attributes valid for your model")
+    tag = create(:tag)
+    episode = create(:episode)
+    {
+      :tag_id => tag.id,
+      :episode_id => episode.id
+    }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    tag = create(:tag)
+    {
+      :tag_id => tag.id,
+      :episode_id => nil
+    }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -101,14 +106,17 @@ RSpec.describe TaggingsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        episode = create(:episode)
+        {
+          :episode_id => episode.id
+        }
       }
 
       it "updates the requested tagging" do
         tagging = Tagging.create! valid_attributes
         put :update, params: {id: tagging.to_param, tagging: new_attributes}, session: valid_session
         tagging.reload
-        skip("Add assertions for updated state")
+        expect(tagging.episode_id).to match(new_attributes[:episode_id])
       end
 
       it "redirects to the tagging" do
@@ -138,7 +146,7 @@ RSpec.describe TaggingsController, type: :controller do
     it "redirects to the taggings list" do
       tagging = Tagging.create! valid_attributes
       delete :destroy, params: {id: tagging.to_param}, session: valid_session
-      expect(response).to redirect_to(taggings_url)
+      expect(response).to redirect_to(taggings_path)
     end
   end
 
