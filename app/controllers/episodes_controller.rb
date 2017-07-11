@@ -3,7 +3,12 @@ class EpisodesController < ApplicationController
   caches_page :index
 
   def index
-    @episodes = Episode.published.where(pro: false)
+    if params[:search]
+      @episodes = Episode.published.where(pro: false).matching_with(params[:search])
+    else
+      @episodes = Episode.published.where(pro: false)
+    end
+
   end
 
   def show
@@ -45,6 +50,6 @@ private
   end
 
   def episode_params
-    params.require(:episode).permit(:description, :name, :seconds, :published_on, :timecode, :tags).to_h
+    params.require(:episode).permit(:description, :name, :seconds, :published_on, :timecode, :tags, :search).to_h
   end
 end
