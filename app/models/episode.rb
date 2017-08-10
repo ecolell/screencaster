@@ -1,4 +1,4 @@
-class Episode < ActiveRecord::Base
+class Episode < ApplicationRecord
   validates_presence_of :name, :description
   scope :published, -> { where('published_on <= ?', Time.now.to_date) }
 
