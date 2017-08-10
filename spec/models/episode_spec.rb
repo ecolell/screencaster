@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe Episode do
   it "validates presence of name" do
@@ -11,7 +11,7 @@ describe Episode do
 
   it "scopes published episodes" do
     published = create(:episode, published_on: 2.days.ago)
-    unpublished = create(:episode, published_on: 2.days.from_now)
+    create(:episode, published_on: 2.days.from_now)
     expect(Episode.published).to eq([published])
   end
 
