@@ -43,7 +43,7 @@ private
   def load_episode
     @episode = Episode.find(params[:id])
   end
-  
+
   def episode_params
     params.require(:episode).permit(:description, :name, :seconds, :published_on, :timecode)
   end
