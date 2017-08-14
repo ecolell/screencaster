@@ -32,4 +32,5 @@ group :test do
   gem "rb-fsevent"
   gem "rspec-collection_matchers"
   gem 'simplecov', :require => false
+  gem 'coveralls', require: false
 end
