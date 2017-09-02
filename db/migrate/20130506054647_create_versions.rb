@@ -1,4 +1,6 @@
 class CreateVersions < ActiveRecord::Migration[5.0]
+  using(:episodes)
+  
   def self.up
     create_table :versions do |t|
       t.string   :item_type, :null => false

@@ -1,4 +1,6 @@
 class CreateTaggings < ActiveRecord::Migration[5.1]
+  using(:tags)
+  
   def change
     create_table :taggings do |t|
       t.belongs_to :tag, foreign_key: true

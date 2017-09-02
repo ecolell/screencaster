@@ -1,0 +1,21 @@
+octopus:
+  environments:
+    - development
+    - production
+  development:
+    episodes:
+      adapter: sqlite3
+      database: db/development1.sqlite3
+      pool: 5
+      timeout: 5000
+    tags:
+      adapter: sqlite3
+      database: db/development2.sqlite3
+      pool: 5
+      timeout: 5000
+  production:
+    shard_one:
+      adapter: sqlite3
+      database: db/production1.sqlite3
+      pool: 5
+      timeout: 5000

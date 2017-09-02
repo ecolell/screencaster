@@ -1,4 +1,6 @@
 class CreateEpisodes < ActiveRecord::Migration[5.0]
+  using(:episodes)
+  
   def change
     create_table :episodes do |t|
       t.string :name

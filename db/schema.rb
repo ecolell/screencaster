@@ -10,41 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170707144318) do
-
-  create_table "episodes", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.integer "seconds"
-    t.date "published_on"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "pro", default: false, null: false
-  end
-
-  create_table "taggings", force: :cascade do |t|
-    t.integer "tag_id"
-    t.integer "episode_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["episode_id"], name: "index_taggings_on_episode_id"
-    t.index ["tag_id"], name: "index_taggings_on_tag_id"
-  end
-
-  create_table "tags", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "versions", force: :cascade do |t|
-    t.string "item_type", null: false
-    t.integer "item_id", null: false
-    t.string "event", null: false
-    t.string "whodunnit"
-    t.text "object"
-    t.datetime "created_at"
-    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
-  end
+ActiveRecord::Schema.define(version: 0) do
 
 end

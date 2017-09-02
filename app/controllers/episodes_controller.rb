@@ -1,12 +1,13 @@
 class EpisodesController < ApplicationController
+  around_action :select_shard
   before_action :load_episode, only: [:show, :edit, :update, :destroy]
   caches_page :index
 
   def index
     if params[:search]
-      @episodes = Episode.published.where(pro: false).matching_with(params[:search])
+      @episodes = Episode.using(:episodes).published.where(pro: false).matching_with(params[:search])
     else
-      @episodes = Episode.published.where(pro: false)
+      @episodes = Episode.using(:episodes).published.where(pro: false)
     end
 
   end
@@ -15,14 +16,14 @@ class EpisodesController < ApplicationController
   end
 
   def new
-    @episode = Episode.new
+    @episode = Episode.using(:episodes).new
   end
 
   def edit
   end
 
   def create
-    @episode = Episode.new(episode_params)
+    @episode = Episode.using(:episodes).new(episode_params)
     if @episode.save
       redirect_to @episode, notice: 'Episode was successfully created.'
     else
@@ -46,10 +47,14 @@ class EpisodesController < ApplicationController
 private
 
   def load_episode
-    @episode = Episode.find(params[:id])
+    @episode = Episode.using(:episodes).find(params[:id])
   end
 
   def episode_params
     params.require(:episode).permit(:description, :name, :seconds, :published_on, :timecode, :tags, :search).to_h
+  end
+
+  def select_shard(&block)
+    Octopus.using(:episodes, &block)
   end
 end

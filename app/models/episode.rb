@@ -1,7 +1,11 @@
+
+PaperTrail::Version.allow_shard :episodes
+
 # :nodoc:
 class Episode < ApplicationRecord
   has_many :taggings
   has_many :tags, through: :taggings
+  allow_shard :episodes
 
   validates_presence_of :name, :description
   scope :published, -> { where('published_on <= ?', Time.now.to_date) }
@@ -10,7 +14,7 @@ class Episode < ApplicationRecord
     where(query, pattern: "%#{pattern}%")
   }
 
-  has_paper_trail
+  #has_paper_trail
 
   def timecode
     return unless seconds

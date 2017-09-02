@@ -19,6 +19,7 @@ gem 'actionpack-action_caching'
 
 gem 'byebug', group: :development
 gem 'web-console', group: :development
+gem 'ar-octopus'
 
 group :test, :development do
   gem "rspec-rails"

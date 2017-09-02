@@ -1,4 +1,5 @@
 class TaggingsController < ApplicationController
+  around_action :select_shard
   before_action :set_tagging, only: [:show, :edit, :update, :destroy]
 
   # GET /taggings
@@ -54,5 +55,9 @@ class TaggingsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def tagging_params
       params.require(:tagging).permit(:tag_id, :episode_id)
+    end
+
+    def select_shard(&block)
+      Octopus.using(:tags, &block)
     end
 end
