@@ -21,7 +21,7 @@
     <td><%= episode.name %></td>
     <td><%= episode.description %></td>
     <td><%= episode.seconds %></td>
-    <td><%= episode.tags.count() %></td>
+    <!--<td>%= episode.tags.count() %</td>-->
     <td><%= link_to 'Show', episode %></td>
     <td><%= link_to 'Edit', edit_episode_path(episode) %></td>
     <td><%= link_to 'Destroy', episode, method: :delete, data: { confirm: 'Are you sure?' } %></td>

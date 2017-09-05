@@ -21,10 +21,10 @@
 <% end %>
 
 <p>
-  <b>Tags:</b>
-  <% @episode.tags.each do |tag| %>
-    <strong><%= tag.name %></strong>
-  <% end %>
+  <!--<b>Tags:</b>
+  < @episode.using(:tags).tags.each do |tag| >
+    <strong><= tag.name ></strong>
+  < end >-->
 </p>
 
 <%= link_to 'Edit', edit_episode_path(@episode) %> |
